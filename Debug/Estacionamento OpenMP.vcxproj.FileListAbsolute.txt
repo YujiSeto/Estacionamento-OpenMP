@@ -1,0 +1,2 @@
+C:\Users\Yuji\source\repos\Estacionamento OpenMP\Debug\Estacionamento OpenMP.exe
+C:\Users\Yuji\source\repos\Estacionamento OpenMP\Debug\Estacionamento OpenMP.pdb
