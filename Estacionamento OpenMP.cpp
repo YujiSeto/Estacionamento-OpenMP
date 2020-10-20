@@ -19,7 +19,7 @@ int i;                          // Controle de FOR
 int numeroveiculo = 1;          // Número do Veículo Entrando ou Saindo
 int numerovaga = 0;             // Número da Vaga
 int tempodeespera = 100;        // Tempo de Espera em ms para Entrada e Saída de Veículos
-int nome;
+int numveiculos = 0;
 
 int main()
 {
@@ -85,7 +85,7 @@ int main()
         cout << "--------------------------------------------\n";
         cout << "\n";
         cout << "+------------------------------------------+\n";
-        cout << "|       Selecione uma opção                |\n";
+        cout << "|       Selecione uma opcao                |\n";
         cout << "|  1  - Entrada de Veiculos                |\n";
         cout << "|  2  - Saida de Veiculos                  |\n";
         cout << "|  0  - Sair do Programa                   |\n";
@@ -124,7 +124,7 @@ int main()
                     {
                         cout << "ERRO!!!\n";
                         cout << "O numero de Veiculos Entrando nao pode ser maior que numero de Cancelas.\n";
-                        return 0;
+                        system("pause");
                     }
                     if (qtdveiculos > qtdvagasdisponiveis)
                     {
@@ -143,8 +143,11 @@ int main()
                     qtdvagasdisponiveis--; //Diminuir a quantidade de Vagas Disponíveis
                     qtdvagasocupadas++; //Aumentar a quantidade de Vagas Ocupadas
                     numerovaga++; //Avançar para a próxima Vaga Livre
-                    cout << "O veiculo " << i+1 << " preencheu a vaga numero " << numerovaga << "\n"; //Descrição da Thread que está atuando
+                    //cout << "O veiculo " << i+1 << " preencheu a vaga numero " << numerovaga << "\n"; //Descrição da Thread que está atuando
+                    numveiculos++;
                 }
+                cout << numveiculos << " veiculos ocuparam as vagas ate o numero de vaga " << numerovaga << "\n";
+                numveiculos = 0;
             }
             system("pause");
 
@@ -194,11 +197,14 @@ int main()
                 #pragma omp parallel for
                 for (i = 0; i < qtdveiculos; i++)
                 {
-                    cout << "O veiculo " << i+1 << " liberou a vaga numero " << numerovaga << "\n"; //Descrição da Thread que está atuando
+                    //cout << "O veiculo " << i+1 << " liberou a vaga numero " << numerovaga << "\n"; //Descrição da Thread que está atuando
                     qtdvagasdisponiveis++; //Aumentar a quantidade de Vagas Disponíveis
                     qtdvagasocupadas--; //Diminuir a quantidade de Vagas Ocupadas
                     numerovaga--; //Liberar Vaga e retornar para a Vaga Anterior
+                    numveiculos++;
                 }
+                cout << numveiculos << " veiculos liberam as vagas ate o numero de vaga " << numerovaga << "\n";
+                numveiculos = 0;
             }
             system("pause");
         }
@@ -207,14 +213,3 @@ int main()
     cout << "Programa Finalizado\n";
     system("pause");
 }
-
-// Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração
-// Depurar programa: F5 ou menu Depurar > Iniciar Depuração
-
-// Dicas para Começar: 
-//   1. Use a janela do Gerenciador de Soluções para adicionar/gerenciar arquivos
-//   2. Use a janela do Team Explorer para conectar-se ao controle do código-fonte
-//   3. Use a janela de Saída para ver mensagens de saída do build e outras mensagens
-//   4. Use a janela Lista de Erros para exibir erros
-//   5. Ir Para o Projeto > Adicionar Novo Item para criar novos arquivos de código, ou Projeto > Adicionar Item Existente para adicionar arquivos de código existentes ao projeto
-//   6. No futuro, para abrir este projeto novamente, vá para Arquivo > Abrir > Projeto e selecione o arquivo. sln
