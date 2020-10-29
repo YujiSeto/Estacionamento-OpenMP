@@ -19,7 +19,7 @@ int i;                          // Controle de FOR
 int numeroveiculo = 1;          // Número do Veículo Entrando ou Saindo
 int numerovaga = 0;             // Número da Vaga
 int tempodeespera = 100;        // Tempo de Espera em ms para Entrada e Saída de Veículos
-int numveiculos = 0;
+int movimentacaoveiculos = 0;
 
 int main()
 {
@@ -144,10 +144,10 @@ int main()
                     qtdvagasocupadas++; //Aumentar a quantidade de Vagas Ocupadas
                     numerovaga++; //Avançar para a próxima Vaga Livre
                     //cout << "O veiculo " << i+1 << " preencheu a vaga numero " << numerovaga << "\n"; //Descrição da Thread que está atuando
-                    numveiculos++;
+                    movimentacaoveiculos++;
                 }
-                cout << numveiculos << " veiculos ocuparam as vagas ate o numero de vaga " << numerovaga << "\n";
-                numveiculos = 0;
+                cout << movimentacaoveiculos << " veiculos ocuparam as vagas ate o numero de vaga " << numerovaga << "\n";
+                movimentacaoveiculos = 0;
             }
             system("pause");
 
@@ -201,10 +201,10 @@ int main()
                     qtdvagasdisponiveis++; //Aumentar a quantidade de Vagas Disponíveis
                     qtdvagasocupadas--; //Diminuir a quantidade de Vagas Ocupadas
                     numerovaga--; //Liberar Vaga e retornar para a Vaga Anterior
-                    numveiculos++;
+                    movimentacaoveiculos++;
                 }
-                cout << numveiculos << " veiculos liberam as vagas ate o numero de vaga " << numerovaga << "\n";
-                numveiculos = 0;
+                cout << movimentacaoveiculos << " veiculos liberam as vagas ate o numero de vaga " << numerovaga << "\n";
+                movimentacaoveiculos = 0;
             }
             system("pause");
         }
